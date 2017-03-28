@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TextField } from "material-ui";
-import { addTodoAsync } from "./../actions"
+import connection from "./../../connection";
 
 class AddTodoNotYetConnected extends Component {
     constructor() {
@@ -32,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = {
-    addTodoAsync
+    addTodoAsync : connection.actions.addTodoAsync
 };
 
 export const AddTodo = connect(

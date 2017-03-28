@@ -10,32 +10,23 @@ import thunk from "redux-thunk";
 import { reducer } from "./reducer";
 import { MuiThemeProvider } from "material-ui";
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {subscribe} from "./modules/common/connection";
-import todo from "./modules/todo";
+import FirebaseProvider from "./modules/connection/component";
 
 injectTapEventPlugin();
 
-const init = initialTodos => {
-  const logger = createLogger({
+const logger = createLogger({
     // ...options
-  });
-  let middlewares = [thunk, logger];
-  const initialState = {
-    todos : todo.initialState
-  };
-  initialState.todos.todos = initialTodos;
-  const store = createStore(reducer, initialState, applyMiddleware(...middlewares));
+});
+let middlewares = [thunk, logger];
+const store = createStore(reducer, applyMiddleware(...middlewares));
 
-  ReactDOM.render(
-    <MuiThemeProvider>
-      <Provider store={store}>
+ReactDOM.render(
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <FirebaseProvider>
         <BasicRouter />
-      </Provider>
-    </MuiThemeProvider>,
-    document.getElementById('root')
-  );
-
-  return store.dispatch;
-}
-const addOne = one => dispatch => dispatch(todo.actions.addTodo(one));
-subscribe(init)(addOne);
+      </FirebaseProvider>
+    </Provider>
+  </MuiThemeProvider>,
+  document.getElementById('root')
+);
