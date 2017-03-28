@@ -5,5 +5,5 @@ export const addTodoAsync = item => dispatch => {
 };
 
 export const toggleTodoAsync = item => dispatch => {
-    getTodoItemRef(item.key).set({completed : !item.completed});
+    getTodoItemRef(item.key).set(item);
 };
