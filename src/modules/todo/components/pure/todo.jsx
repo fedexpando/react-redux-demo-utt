@@ -1,28 +1,14 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import {RaisedButton} from "material-ui";
+import {ListItem, Checkbox} from "material-ui";
 
-class TodoNotYetConnected extends Component {
+export class Todo extends Component {
     render(){
         return (
-            <RaisedButton
-              label={"CHUPITO EL PAME"}
+             <ListItem
+              leftCheckbox={<Checkbox checked={this.props.todo.completed} onCheck={(evt, b) => {this.props.onCheck() } } />}
+              primaryText={this.props.todo.text}
             />
         );
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-  }
-}
-
-export const Todo  = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoNotYetConnected)

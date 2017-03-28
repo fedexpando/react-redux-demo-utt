@@ -6,8 +6,8 @@ const initialState = {
     [TODOS]: [],
 };
 
-const toggleTodo = (todo, id) => {
-    if (todo.id === id) {
+const toggleTodo = (todo, text) => {
+    if (todo.text === text) {
         return Object.assign({}, todo, { completed: !todo.completed });
     }
 
@@ -21,7 +21,7 @@ export const reducer = (state = initialState, action) => {
         case ActionTypes.SET_VISIBILITY:
             return Object.assign({}, state, { [FILTER]: action.payload });
         case ActionTypes.TOGGLE_TODO:
-            return Object.assign({}, state, state[TODOS].map(toggleTodo));
+            return Object.assign({}, state, state[TODOS].map((todo) => {return toggleTodo(todo, action.payload)} ) );
         default:
             return state;
     }
