@@ -25,11 +25,9 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-      toggleTodo: (wea) => {dispatch(toggleTodo(wea))}
-  }
-}
+const mapDispatchToProps = {
+    toggleTodo
+};
 
 export const TodoList  = connect(
   mapStateToProps,

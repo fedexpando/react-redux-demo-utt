@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TextField } from "material-ui";
-import { addTodo } from "./../actions"
+import { addTodoAsync } from "./../actions"
 
 class AddTodoNotYetConnected extends Component {
     constructor() {
@@ -15,7 +15,7 @@ class AddTodoNotYetConnected extends Component {
         return (
             <div onBlur={() => { 
                 if(this.state.textValue !== ""){
-                    this.props.addTodo({ text: this.state.textValue, completed: false }); 
+                    this.props.addTodoAsync({ text: this.state.textValue, completed: false }); 
                     this.setState({textValue: ""}) };
                 } 
                 }>
@@ -29,15 +29,13 @@ class AddTodoNotYetConnected extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
     }
-}
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        addTodo: (wea) => { dispatch(addTodo(wea))},
-    }
-}
+const mapDispatchToProps = {
+    addTodoAsync
+};
 
 export const AddTodo = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddTodoNotYetConnected)
+)(AddTodoNotYetConnected);
