@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import App from './App';
 import './index.css';
-import { BasicRouter } from "./modules/todo/components";
+import { ApplicationRouter } from "./modules/main/Router";
 import { Provider } from "react-redux";
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from "redux";
@@ -24,7 +24,7 @@ ReactDOM.render(
   <MuiThemeProvider>
     <Provider store={store}>
       <FirebaseProvider>
-        <BasicRouter />
+        <ApplicationRouter />
       </FirebaseProvider>
     </Provider>
   </MuiThemeProvider>,

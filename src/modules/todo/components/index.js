@@ -1,4 +1,5 @@
-import {BasicRouter} from "./router.jsx"
-import {Todo} from "./pure/todo.jsx"
+import { Filter } from "./filter";
+import { TodoList } from "./todoList";
+import { AddTodo } from "./addTodo";
 
-export {Todo, BasicRouter}
+export default { TodoList, Filter, AddTodo }
