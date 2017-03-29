@@ -22,7 +22,7 @@ class FirebaseProviderNotYetConnected extends Component{
         todosRef.on("child_changed", data => {
             const item = data.val();
             item.key = data.key;
-            this.props.toggleTodo(item);
+            this.props.toggleTodo(item.key);
         });
     }
 

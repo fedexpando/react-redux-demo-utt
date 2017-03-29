@@ -12,13 +12,17 @@ class AddTodoNotYetConnected extends Component {
         }
     }
     render() {
+        const style = {
+            textAlign:"center"
+        }
         return (
-            <div onBlur={() => { 
-                if(this.state.textValue !== ""){
-                    this.props.addTodoAsync({ text: this.state.textValue, completed: false }); 
-                    this.setState({textValue: ""}) };
-                } 
-                }>
+            <div style={style}
+                onBlur={() => {
+                    if (this.state.textValue !== "") {
+                        this.props.addTodoAsync({ text: this.state.textValue, completed: false });
+                        this.setState({ textValue: "" })
+                    };
+                }}>
                 <TextField id="todo-textFile" value={this.state.textValue}
                     onChange={(evt, newValue) => { this.setState({ textValue: newValue }) }} />
             </div>
@@ -32,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = {
-    addTodoAsync : connection.actions.addTodoAsync
+    addTodoAsync: connection.actions.addTodoAsync
 };
 
 export const AddTodo = connect(
