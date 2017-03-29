@@ -11,20 +11,27 @@ class AddTodoNotYetConnected extends Component {
             textValue: ""
         }
     }
+    createTodo = () => {
+        if (this.state.textValue !== "") {
+            this.props.addTodoAsync({ text: this.state.textValue, completed: false });
+            this.setState({ textValue: "" })
+        };
+    }
     render() {
         const style = {
-            textAlign:"center"
+            textAlign: "center"
         }
         return (
-            <div style={style}
-                onBlur={() => {
-                    if (this.state.textValue !== "") {
-                        this.props.addTodoAsync({ text: this.state.textValue, completed: false });
-                        this.setState({ textValue: "" })
-                    };
-                }}>
-                <TextField id="todo-textFile" value={this.state.textValue}
-                    onChange={(evt, newValue) => { this.setState({ textValue: newValue }) }} />
+            <div style={style}>
+                <TextField
+                    value={this.state.textValue}
+                    onChange={(evt, newValue) => { this.setState({ textValue: newValue }) }}
+                    onKeyPress={evt => evt.key === "Enter" ? this.createTodo() : null}
+                    onBlur={this.createTodo}
+                    hintText={"Write Todo text here! Then press Enter or Tab"}
+                    hintStyle={{ textAlign: "center", width: "100%" }}
+                    style={{ width: "100%" }}
+                />
             </div>
         );
     }

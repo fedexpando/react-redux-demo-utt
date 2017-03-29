@@ -10,12 +10,12 @@ class FilterNotYetConnected extends Component {
         const style = {
             radioButton:{
                 display: "inline-block",
-                width: "100px"
+                width: "20%"
             }
         }
         return (
-            <div style={{textAlign:"center"}}>
-                <RadioButtonGroup style={{position:"relative",top:"10px", display:"inline-block"}}
+            <div style={{textAlign:"center", width:"100%", padding:"12px", height: "48px"}}>
+                <RadioButtonGroup style={{position:"relative", display:"inline-block", width:"100%"}}
                 name="visibilityFilters" valueSelected={this.props.visibilityFilter} onChange={(evt, value) => {this.props.setVisibility(value)}}>
                     <RadioButton
                         value="SHOW_ALL"
