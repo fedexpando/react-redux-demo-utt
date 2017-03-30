@@ -1,17 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
 import {ListItem, Checkbox,Divider} from "material-ui";
 
-export class Todo extends Component {
-    render(){
-        return (
-            <span>
-                <ListItem
-                leftCheckbox={<Checkbox checked={this.props.todo.completed} onCheck={(evt, b) => {this.props.onCheck() } } />}
-                primaryText={this.props.todo.text}
+
+export const Todo = props => (
+    <span>
+        <ListItem
+            leftCheckbox={
+                <Checkbox 
+                    checked={props.todo.completed} 
+                    onCheck={(evt, b) => {
+                            const completed = !props.todo.completed;
+                            const todo = Object.assign({}, props.todo , { completed });
+                            props.toggle(todo);
+                        } 
+                    } 
                 />
-                <Divider inset={true} />
-            </span>
-        );
-    }
-}
+            }
+            primaryText={props.todo.text}
+        />
+        <Divider inset={true} />
+    </span>
+);
 

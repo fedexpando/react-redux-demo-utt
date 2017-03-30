@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom';
 import { TodoApplication } from './TodoApplication'
 
-export const ApplicationRouter = () => (
+export const Application = () => (
   <Router>
     <div style={{height:"100%",width:"100%"}}>
       <Route exact path="/" component={TodoApplication} />

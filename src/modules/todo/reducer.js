@@ -17,11 +17,7 @@ const toggleTodo = (todo, key) => {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.ADD_TODO:
-            if (!state[TODOS].map(v => v.key).includes(action.payload.key)) {
-                return Object.assign({}, state, { [TODOS]: [...state[TODOS], action.payload] });
-            } else {
-                return state;
-            }
+            return Object.assign({}, state, { [TODOS]: [action.payload, ...state[TODOS]] });
         case ActionTypes.SET_VISIBILITY:
             return Object.assign({}, state, { [FILTER]: action.payload });
         case ActionTypes.TOGGLE_TODO:

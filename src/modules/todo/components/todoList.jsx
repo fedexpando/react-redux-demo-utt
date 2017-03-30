@@ -4,7 +4,6 @@ import { List, Paper } from "material-ui";
 import { Todo } from "./pure/todo"
 import { getTodos, getVisibilityFilter } from "./../selectors";
 import connection from "./../../connection";
-import MediaQuery from "react-responsive";
 
 class TodoListNotYetConnected extends Component {
     doFilter = (item) => {
@@ -27,12 +26,12 @@ class TodoListNotYetConnected extends Component {
                     {this.props.todos.filter((item) => this.doFilter(item))
                         .map((item, index) => {
                             return(
-                            <Todo key={index} todo={item}
-                                onCheck={() => {
-                                    let newItem = Object.assign({}, item, { completed: !item.completed })
-                                    this.props.toggleTodo(newItem);
-                                }} >
-                            </Todo>);
+                                <Todo 
+                                    key={index} 
+                                    todo={item}
+                                    toggle={this.props.toggleTodo}
+                                />
+                            );
                         })
                     }
                 </List>

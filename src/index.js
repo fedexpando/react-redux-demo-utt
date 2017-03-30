@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 //import App from './App';
 import './index.css';
-import { ApplicationRouter } from "./modules/main/Router";
+import { Application } from "./modules/main/Application";
 import { Provider } from "react-redux";
 import { createLogger } from 'redux-logger'
 import { createStore, applyMiddleware } from "redux";
@@ -17,6 +17,7 @@ injectTapEventPlugin();
 const logger = createLogger({
     // ...options
 });
+
 let middlewares = [thunk, logger];
 const store = createStore(reducer, applyMiddleware(...middlewares));
 
@@ -24,7 +25,7 @@ ReactDOM.render(
   <MuiThemeProvider>
     <Provider store={store}>
       <FirebaseProvider>
-        <ApplicationRouter />
+        <Application />
       </FirebaseProvider>
     </Provider>
   </MuiThemeProvider>,

@@ -5,15 +5,6 @@ import {todosRef} from "./../database";
 
 class FirebaseProviderNotYetConnected extends Component{
     componentDidMount(){
-        todosRef.once("value")
-            .then(snapshot => {
-                const val = snapshot.val();
-                for(var k in val){
-                    const elem = val[k];
-                    elem.key = k;
-                    this.props.addTodo(elem); 
-                }
-            });
         todosRef.on("child_added", data => {
             const item = data.val();
             item.key = data.key;
